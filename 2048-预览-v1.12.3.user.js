@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         2048-预览
-// @version      1.12.4
+// @version      1.12.5
 // @namespace    https://sleazyfork.org/zh-CN/users/1461640-%E6%98%9F%E5%AE%BF%E8%80%81%E9%AD%94
 // @author       星宿老魔
 // @description  2048核基地·预览图片·自动签到·搜索过滤·关键词过滤·列表附件预览
@@ -612,9 +612,7 @@ targetMoodRadio.dispatchEvent(new Event("click",{bubbles:!0})),targetMoodRadio.d
 ;"function"==typeof iframeWindow.qdCaptchaStart&&(startTriggered=!0,iframeWindow.qdCaptchaStart())}catch(error){}};const checkInterval=window.setInterval(()=>{try{if(handled)return;const popupDoc=iframe.contentDocument||iframe.contentWindow?.document
 ;if(!popupDoc)return;focusVisibleCaptcha();const frameHtml=popupDoc.documentElement?.outerHTML||"";if(!frameHtml)return
 ;const hycodeInput=popupDoc.querySelector('#input_bbb, input[name="hycode"]'),hyrandstrInput=popupDoc.querySelector('#randstr_bbb, input[name="hyrandstr"]'),hycode=hycodeInput?.value?.trim()||"",hyrandstr=hyrandstrInput?.value?.trim()||""
-;if(!submitting&&(hycode||hyrandstr)){const form=popupDoc.querySelector("form");return form&&Array.from(form.querySelectorAll('input[type="hidden"]')),submitting=!0,handled=!0,window.clearInterval(checkInterval),modal.remove(),
-void this.finishCheckInAfterVerifyReload(buttonElement)}const tokenInput=popupDoc.querySelector("#verify_token");if(tokenInput?.value)return handled=!0,window.clearInterval(checkInterval),modal.remove(),tokenInput.value,
-void this.finishCheckInAfterVerifyReload(buttonElement);if(this.isCheckInSuccessPageHtml(frameHtml))return handled=!0,window.clearInterval(checkInterval),modal.remove(),void this.finishCheckInSuccess(buttonElement)
+;if(!submitting&&(hycode||hyrandstr)){submitting=!0,Toast.show("\u9a8c\u8bc1\u7801\u4ee4\u724c\u5df2\u751f\u6210\uff0c\u8bf7\u7ee7\u7eed\u5728\u5f39\u7a97\u5185\u5b8c\u6210\u9a8c\u8bc1", "info",2e3)}const tokenInput=popupDoc.querySelector("#verify_token");if(tokenInput?.value&&!submitting){submitting=!0,Toast.show("\u9a8c\u8bc1\u72b6\u6001\u5df2\u66f4\u65b0\uff0c\u8bf7\u7ee7\u7eed\u5728\u5f39\u7a97\u5185\u5b8c\u6210\u9a8c\u8bc1", "info",2e3)}if(this.isCheckInSuccessPageHtml(frameHtml))return handled=!0,window.clearInterval(checkInterval),modal.remove(),void this.finishCheckInSuccess(buttonElement)
 ;this.isNeedReplyHtml(frameHtml)&&(handled=!0,window.clearInterval(checkInterval),modal.remove(),Toast.show("\u9a8c\u8bc1\u901a\u8fc7\uff0c\u4f46\u670d\u52a1\u7aef\u8981\u6c42\u5148\u56de\u5e16\uff0c\u6b63\u5728\u5904\u7406...","info",3e3),
 this.doAutoReplyWithVerify(this.prefetchedReplyThread).then(replyOk=>{replyOk&&(Toast.show("\u56de\u5e16\u6210\u529f\uff0c\u8bf7\u91cd\u65b0\u5b8c\u6210\u4e00\u6b21\u7b7e\u5230\u9a8c\u8bc1","success",3e3),
 this.openCheckInPopup(buttonElement,selectedMood))}))}catch(error){}},500);window.setTimeout(()=>{window.clearInterval(checkInterval)},18e4)}catch(error){Toast.show("\u274c \u52a0\u8f7d\u5931\u8d25: "+error.message,"error",3e3)}}
