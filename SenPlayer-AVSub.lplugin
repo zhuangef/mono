@@ -12,8 +12,8 @@
 #    否则脚本识别不到番号会直接放行。
 
 [Script]
-http-response ^https://api\.assrt\.net/v1/sub/search\? script-path=SCRIPT_URL, requires-body=true, timeout=15
-http-response ^https://api\.assrt\.net/v1/sub/detail script-path=SCRIPT_URL, requires-body=true, timeout=15
+http-response ^https://api\.assrt\.net/v1/sub/search\? script-path=https://raw.githubusercontent.com/zhuangef/mono/refs/heads/master/avsub-assrt-shim.js, requires-body=true, timeout=15
+http-response ^https://api\.assrt\.net/v1/sub/detail script-path=https://raw.githubusercontent.com/zhuangef/mono/refs/heads/master/avsub-assrt-shim.js, requires-body=true, timeout=15
 
 [MITM]
 hostname = api.assrt.net
