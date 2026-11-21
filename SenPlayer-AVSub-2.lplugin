@@ -21,7 +21,7 @@
 # （明文 http 不需要 MITM 解密，脚本直接可改响应；MITM 段仍保留给 https 搜索用。）
 
 [Script]
-http-response ^https?://api\.assrt\.net/v1/sub/ script-path=SCRIPT_URL, requires-body=true, timeout=15, tag=AVSub-Shim
+http-response ^https?://api\.assrt\.net/v1/sub/ script-path=https://raw.githubusercontent.com/zhuangef/mono/refs/heads/master/avsub-assrt-shim-2.js, requires-body=true, timeout=15, tag=AVSub-Shim
 
 [MITM]
 hostname = api.assrt.net
