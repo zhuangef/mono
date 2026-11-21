@@ -1,0 +1,19 @@
+#!name=SenPlayer AV番号字幕
+#!desc=SenPlayer 搜字幕时，番号关键词改走迅雷字幕源（伪装成 assrt 响应）；非番号关键词放行，不影响正常影片。
+#!author=Muse
+#!icon=https://raw.githubusercontent.com/Loon0x00/loon/main/icon.png
+#!homepage=https://nsloon.app
+
+# 安装前必读（详见 README.md）：
+# 1. 把 loon/avsub-assrt-shim.js 托管到可公开访问的 URL（如 GitHub Gist 的 Raw 地址），
+#    将下面两处 SCRIPT_URL 替换为该地址；
+# 2. LOON 内导入本插件，并确认已安装信任 LOON CA（抓包能看到 api.assrt.net 明文即已就绪）；
+# 3. 前置条件：Emby 里该影片的标题须包含番号（SenPlayer 是拿标题当关键词去搜的），
+#    否则脚本识别不到番号会直接放行。
+
+[Script]
+http-response ^https://api\.assrt\.net/v1/sub/search\? script-path=SCRIPT_URL, requires-body=true, timeout=15
+http-response ^https://api\.assrt\.net/v1/sub/detail script-path=SCRIPT_URL, requires-body=true, timeout=15
+
+[MITM]
+hostname = api.assrt.net
