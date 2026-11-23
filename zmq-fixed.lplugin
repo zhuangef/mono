@@ -1,0 +1,11 @@
+#!name=字母圈
+#!desc=解锁VIP及金币视频 (fixed 2026-11-23: 适配新版 CDN 布局 /movie/auto/<hash>.m3u8)
+#!author=chmg2025 (fixed)
+#!openurl=https://www.zimuquan10.uk
+
+[Script]
+# 字母圈
+http-response ^https?:\/\/[^\/]+\/index\.php\/vod\/play\/id\/\d+\/sid\/\d+\/nid\/\d+\.html script-path=SCRIPT_URL, requires-body=true, timeout=60, tag=字母圈
+
+[MITM]
+hostname = zimuquan.top, *.zimuquan.top, *.zimuquan3.top, *.zimuquan10.uk, *.zimuquan12.uk, www.zimuquan14.uk, *.zimuquan13.uk, *.zimuquan19.uk
